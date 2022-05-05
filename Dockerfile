@@ -1,4 +1,4 @@
-FROM golang:alpine3.15.4 as build-stage
+FROM golang:alpine3.15 as build-stage
 
 RUN apk --update --no-cache add \
     git
