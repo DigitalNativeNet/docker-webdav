@@ -1,4 +1,4 @@
-FROM golang:alpine3.15 as build-stage
+FROM golang:alpine3.15.4 as build-stage
 
 RUN apk --update --no-cache add \
     git
@@ -7,17 +7,17 @@ RUN git clone --depth 1 --single-branch https://github.com/hacdias/webdav /src
 
 RUN cd /src && go build -o bin/webdav
 
-FROM alpine:3.15
+FROM alpine:3.15.4
 
 ARG BUILD_DATE
 ARG VERSION
 
-LABEL build_version="catfight360.com version:${VERSION} Build-date:${BUILD_DATE}"
-LABEL maintainer="VergilGao"
+LABEL build_version="digitalnative.net version:${VERSION} Build-date:${BUILD_DATE}"
+LABEL maintainer="support@digitalnative.net"
 LABEL build_from="https://github.com/hacdias/webdav"
-LABEL org.opencontainers.image.source="https://github.com/VergilGao/docker-webdav"
+LABEL org.opencontainers.image.source="https://github.com/DigitalNativeNet/docker-webdav"
 
-ENV TZ="Asia/Shanghai"
+ENV TZ="Europe/London"
 ENV UID=99
 ENV GID=100
 ENV UMASK=000
